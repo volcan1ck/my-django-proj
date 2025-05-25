@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+          <h1>Редактировать задачу</h1>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class = "btn1" type="submit">Сохранить изменения</button>
+        </form>
+        <a class = "btn2" href="{% url 'add_task' %}">Назад к списку</a>
+    </div>
+</body>
+</html>

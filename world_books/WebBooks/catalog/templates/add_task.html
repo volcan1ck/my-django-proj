@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+</head>
+<body>
+    <h1>Мои задачи</h1>
+    <div class="div">
+    <form method="POST">
+        {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input class = "btn1" type = "submit" value="Добавить задачу">
+    </form>
+    </div>
+    <table style = "border: 3px solid black; border-collapse: collapse; border: 1px solid black;">
+        <tr>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">Задание</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">Статус</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">Описание</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">Срок</td>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">{{task.task}}</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">{{task.status}}</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2px solid black;">{{task.description}}</td>
+            <td style="padding: 10px 20px; text-align: center; border: 2nnpx solid black;">{{task.date}}</td>
+            <td>
+                <a class = "btn2" href="{% url 'edit_task' task.id %}">Редактировать</a>
+                <a class = "btn2" href="{% url 'delete_task' task.id %}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>

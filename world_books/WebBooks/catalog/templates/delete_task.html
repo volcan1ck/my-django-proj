@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <div class = "container">
+      <h1>Удалить задачу</h1>
+      <p>Удалить задачу "<strong>{{ tasks.task }}</strong>"?</p>
+      <p>Статус: {{ tasks.status }}</p>
+      <p>Описание: {{ tasks.description }}</p>
+      <p>Дата: {{ tasks.date }}</p>
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn1">Удалить</button>
+        <a class="btn2" href="{% url 'add_task' %}" class="button cancel-button">Отмена</a>
+      </form>
+    </div>
+</body>
+</html>
